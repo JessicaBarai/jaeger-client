@@ -17,7 +17,7 @@ public class JaegerClientApplication {
 	}
 
 	public static void main(String[] args) {
-		System.out.print("STARTING WITH PROPERTIES CHANGED1.0!");
+		System.out.print("STARTING WITH PROPERTIES CHANGED1.1!");
 		SpringApplication.run(JaegerClientApplication.class, args);
 	}
 
