@@ -16,7 +16,7 @@ public class JaegerClientService {
   public Mono<String> get(Integer id) {
 
     return webClient.get()
-        .uri("http://localhost:8082/jaeger/server/" + id)
+        .uri("https://jaeger-server-git-edb.apps.aro.euw-hub03.azure.volvo.net/jaeger/server/" + id)
         .retrieve()
         .bodyToMono(String.class);
   }
