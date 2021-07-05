@@ -37,7 +37,7 @@ public class JaegerClientApplication {
 	public String fromServer() throws RestClientException, JSONException {
 		JSONObject jsonObject= new JSONObject();
 		jsonObject.put("Message from server to client", restTemplate.exchange(
-				"https://jaeger-server-git-edb.apps.aro.euw-hub03.azure.volvo.net/", HttpMethod.GET, null, String.class).getBody());
+				"https://jaeger-server-git:8082/", HttpMethod.GET, null, String.class).getBody());
 		return jsonObject.toString();
 		
 		
