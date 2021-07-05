@@ -33,7 +33,7 @@ public class JaegerClientApplication {
 		return jsonObject.toString();
 		
 	}
-	@RequestMapping("/server")
+	@RequestMapping("/self")
 	public String fromServer() throws RestClientException, JSONException {
 		JSONObject jsonObject= new JSONObject();
 		jsonObject.put("Message from server to client", restTemplate.exchange(
