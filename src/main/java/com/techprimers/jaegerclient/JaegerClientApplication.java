@@ -26,14 +26,14 @@ public class JaegerClientApplication {
 	private RestTemplate restTemplate;
 	
 	
-	@RequestMapping("/")
+	@RequestMapping("/client")
 	public String welcome() throws JSONException {
 		JSONObject jsonObject= new JSONObject();
 		jsonObject.put("Message", "Hello from client");
 		return jsonObject.toString();
 		
 	}
-	@RequestMapping("/server")
+	@RequestMapping("/")
 	public String fromServer() throws RestClientException, JSONException {
 		JSONObject jsonObject= new JSONObject();
 		jsonObject.put("Message from server to client", restTemplate.exchange(
