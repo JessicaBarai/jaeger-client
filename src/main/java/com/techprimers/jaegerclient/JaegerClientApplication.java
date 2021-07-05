@@ -30,7 +30,7 @@ public class JaegerClientApplication {
 		JSONObject jsonObject= new JSONObject();
 		jsonObject.put("Message", "Hello from client");
 		jsonObject.put("Message from server to client", restTemplate.exchange(
-				"http://localhost:8082/", HttpMethod.GET, null, String.class).getBody());
+				"https://jaeger-server-git-edb.apps.aro.euw-hub03.azure.volvo.net/", HttpMethod.GET, null, String.class).getBody());
 		return jsonObject.toString();
 		
 	}
