@@ -21,7 +21,7 @@ public class JaegerConfig {
   }
 
  @Bean
-	public JaegerTracer jaegerTracer() {
+ public JaegerTracer jaegerTracer() {
 			  SamplerConfiguration samplerConfig = SamplerConfiguration.fromEnv().withType(ConstSampler.TYPE).withParam(1);
 			  ReporterConfiguration reporterConfig = ReporterConfiguration.fromEnv().withLogSpans(true).withSender(
 			      SenderConfiguration.fromEnv().withAgentHost("jaeger-all-in-one-inmemory-agent").withAgentPort(6831));
