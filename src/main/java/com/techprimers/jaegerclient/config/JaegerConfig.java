@@ -14,13 +14,21 @@ public class JaegerConfig {
     return WebClient.create("http://jaeger-server-git:8082");
   }
 
-  @Bean
-  public JaegerTracer jaegerTracer() {
+ @Bean
+	public JaegerTracer jaegerTracer() {
+			  SamplerConfiguration samplerConfig = SamplerConfiguration.fromEnv().withType(ConstSampler.TYPE).withParam(1);
+			  ReporterConfiguration reporterConfig = ReporterConfiguration.fromEnv().withLogSpans(true).withSender(
+			      SenderConfiguration.fromEnv().withAgentHost("jaeger-all-in-one-inmemory-agent").withAgentPort(6831));
+			  io.jaegertracing.Configuration config =  new io.jaegertracing.Configuration("jaeger-server").withSampler(samplerConfig).withReporter(reporterConfig);
+			  return config.getTracer();
+			
+		
+	//return new io.jaegertracing.internal.JaegerTracer.Builder("jaeger-server").build();
 
-    return new io.jaegertracing.Configuration("jaeger-client")
-        .withSampler(new io.jaegertracing.Configuration.SamplerConfiguration().withType(ConstSampler.TYPE)
-        .withParam(1))
-        .withReporter(new io.jaegertracing.Configuration.ReporterConfiguration().withLogSpans(true))
-        .getTracer();
-  }
+	/*return new io.jaegertracing.Configuration("jaeger-server")
+				.withSampler(new io.jaegertracing.Configuration.SamplerConfiguration().withType(ConstSampler.TYPE)
+						.withParam(1))
+				.withReporter(new io.jaegertracing.Configuration.ReporterConfiguration().withLogSpans(true))
+				.getTracer();*/
+	}
 }
