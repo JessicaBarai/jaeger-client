@@ -17,7 +17,7 @@ public class JaegerConfig {
 
   @Bean
   public WebClient webClient() {
-    return WebClient.create("http://jaeger-server-git:8082");
+    return WebClient.create("http://jaeger-client-git:8081");
   }
 
  @Bean
