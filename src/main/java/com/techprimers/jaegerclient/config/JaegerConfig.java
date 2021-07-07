@@ -32,7 +32,7 @@ public class JaegerConfig {
 		pros.load(ip);
 		url=pros.getProperty("url");
 		System.out.println("url from properties"+ url);
-		return WebClient.create(url);*/
+		return WebClient.create(url);
 		
 	}
 
