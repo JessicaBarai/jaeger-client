@@ -22,9 +22,9 @@ public class JaegerConfig {
 //WebClient is going to be used to connect client to server, , reactive client to perform HTTP requests, exposing a fluent, reactive API over underlying HTTP client libraries such as Reactor Netty.
 	@Bean
 	public WebClient webClient() throws IOException {
-	return WebClient.create("http://jaeger-server-git:8082");
+	//return WebClient.create("http://jaeger-server-git:8082");
 		
-		/*String filePath="./jaeger-client/src/main/resources/application.properties";
+		String filePath="jar:file:/deployments/jaeger-client-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/jaeger-client/src/main/resources/application.properties";
 		Properties pros;
 		String url;
 		pros= new Properties();
