@@ -18,7 +18,7 @@ public class JaegerConfig {
 //WebClient is going to be used to connect client to server, , reactive client to perform HTTP requests, exposing a fluent, reactive API over underlying HTTP client libraries such as Reactor Netty.
 	@Bean
 	public WebClient webClient() {
-		return WebClient.create("http://jaeger-client-git:8081");
+		return WebClient.create("http://jaeger-server-git:8082");
 	}
 
 	//this is wrong, it should listen to properties file or we should use enviroment variable. Look it up!
