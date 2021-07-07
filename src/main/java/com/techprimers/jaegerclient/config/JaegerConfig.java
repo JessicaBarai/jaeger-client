@@ -1,4 +1,3 @@
-  
 package com.techprimers.jaegerclient.config;
 
 import io.jaegertracing.Configuration.ReporterConfiguration;
@@ -7,18 +6,32 @@ import io.jaegertracing.Configuration.SenderConfiguration;
 import io.jaegertracing.internal.JaegerTracer;
 import io.jaegertracing.internal.samplers.ConstSampler;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
+//"http://jaeger-server-git:8082"
 //this is a configuration where we going to inject two beans
 @Configuration
 public class JaegerConfig {
 //WebClient is going to be used to connect client to server, , reactive client to perform HTTP requests, exposing a fluent, reactive API over underlying HTTP client libraries such as Reactor Netty.
 	@Bean
-	public WebClient webClient() {
-		return WebClient.create("http://jaeger-server-git:8082");
+	public WebClient webClient() throws IOException {
+		//configure in property file for portability
+		String filePath="./src/main/resources/application.properties";
+		Properties pros;
+		String url;
+		pros= new Properties();
+		FileInputStream ip= new FileInputStream(filePath);
+		pros.load(ip);
+		url=pros.getProperty("url");
+		System.out.println("url from properties"+ url);
+		return WebClient.create(url);
 	}
 
 	//this is wrong, it should listen to properties file or we should use enviroment variable. Look it up!
