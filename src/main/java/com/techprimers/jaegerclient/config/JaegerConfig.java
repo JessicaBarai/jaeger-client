@@ -24,7 +24,7 @@ public class JaegerConfig {
 	public WebClient webClient() throws IOException {
 	//return WebClient.create("http://jaeger-server-git:8082");
 		
-		String filePath="jar:file:/deployments/jaeger-client-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/jaeger-client/src/main/resources/application.properties";
+		String filePath="file:/deployments/jaeger-client-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/jaeger-client/src/main/resources/application.properties";
 		Properties pros;
 		String url;
 		pros= new Properties();
