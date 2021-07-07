@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -19,12 +20,15 @@ import org.springframework.web.reactive.function.client.WebClient;
 //this is a configuration where we going to inject two beans
 @Configuration
 public class JaegerConfig {
+	
+	@Value("${url}")
+	private String urlString;
 //WebClient is going to be used to connect client to server, , reactive client to perform HTTP requests, exposing a fluent, reactive API over underlying HTTP client libraries such as Reactor Netty.
 	@Bean
 	public WebClient webClient() throws IOException {
 	//return WebClient.create("http://jaeger-server-git:8082");
 		
-		String filePath="file:/deployments/jaeger-client-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/jaeger-client/src/main/resources/application.properties";
+		/*String filePath="file:/deployments/jaeger-client-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/jaeger-client/src/main/resources/application.properties";
 		Properties pros;
 		String url;
 		pros= new Properties();
@@ -32,7 +36,10 @@ public class JaegerConfig {
 		pros.load(ip);
 		url=pros.getProperty("url");
 		System.out.println("url from properties"+ url);
-		return WebClient.create(url);
+		return WebClient.create(url);*/
+		
+		System.out.println("url from properties" + urlString);
+		return WebClient.create(urlString);
 		
 	}
 
