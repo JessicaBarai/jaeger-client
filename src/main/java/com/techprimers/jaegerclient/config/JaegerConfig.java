@@ -22,8 +22,9 @@ public class JaegerConfig {
 //WebClient is going to be used to connect client to server, , reactive client to perform HTTP requests, exposing a fluent, reactive API over underlying HTTP client libraries such as Reactor Netty.
 	@Bean
 	public WebClient webClient() throws IOException {
-		//configure in property file for portability
-		String filePath="./resources/application.properties";
+		return return WebClient.create()
+		
+		/*String filePath="./resources/application.properties";
 		Properties pros;
 		String url;
 		pros= new Properties();
@@ -31,7 +32,8 @@ public class JaegerConfig {
 		pros.load(ip);
 		url=pros.getProperty("url");
 		System.out.println("url from properties"+ url);
-		return WebClient.create(url);
+		return WebClient.create(url);*/
+		
 	}
 
 	//this is wrong, it should listen to properties file or we should use enviroment variable. Look it up!
