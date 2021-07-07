@@ -23,7 +23,7 @@ public class JaegerConfig {
 	@Bean
 	public WebClient webClient() throws IOException {
 		//configure in property file for portability
-		String filePath="src/main/resources/application.properties";
+		String filePath="./resources/application.properties";
 		Properties pros;
 		String url;
 		pros= new Properties();
